@@ -20,18 +20,18 @@ export const Header: React.FC<HeaderProps> = ({
   toggleFullscreen
 }) => {
   return (
-    <header className="w-full flex items-center justify-between px-6 py-4 glass sticky top-0 z-50">
+    <header className="w-full flex items-center justify-between px-6 py-2 glass sticky top-0 z-50">
       <div className="flex items-center gap-8">
         {/* Logos Container */}
-        <div className="flex flex-col gap-1 border-r border-white/20 pr-8">
+        <div className="flex flex-col gap-0.5 border-r border-white/20 pr-8">
           <div className="flex items-center w-full px-1">
-            <span className="text-[9px] uppercase tracking-widest opacity-40 font-bold min-w-[120px]">Organisateur</span>
-            <span className="text-[9px] uppercase tracking-widest opacity-40 font-bold ml-16">En partenariat avec</span>
+            <span className="text-[8px] uppercase tracking-widest opacity-40 font-bold min-w-[90px]">Organisateur</span>
+            <span className="text-[8px] uppercase tracking-widest opacity-40 font-bold ml-12">En partenariat avec</span>
           </div>
           <img 
             src="https://res.cloudinary.com/diptsoc4h/image/upload/v1778626384/all_logo_combined_bo2zkn.png" 
             alt="Thalès Informatique x Partenaires" 
-            className="h-24 w-auto object-contain"
+            className="h-16 w-auto object-contain"
             referrerPolicy="no-referrer"
           />
         </div>
