@@ -36,14 +36,24 @@ export const ImportPanel: React.FC<ImportPanelProps> = ({
       const data = XLSX.utils.sheet_to_json<any>(ws);
 
       const imported: Participant[] = data.map((row, index) => {
-        // Try to find a name column
-        const name = row.Name || row.name || row.Nom || row.nom || Object.values(row)[0];
+        // Handle First Name and Last Name combinations
+        const firstName = row.Prénom || row.prenom || row.FirstName || row['First Name'] || '';
+        const lastName = row.Nom || row.nom || row.LastName || row['Last Name'] || '';
+        
+        let name = '';
+        if (firstName || lastName) {
+          name = `${firstName} ${lastName}`.trim();
+        } else {
+          // Fallback to searching any name-like column
+          name = row.Name || row.name || Object.values(row)[0];
+        }
+
         return {
           id: `imported-${index}-${Date.now()}`,
           name: String(name),
           email: row.Email || row.email || ''
         };
-      }).filter(p => p.name && p.name !== 'undefined');
+      }).filter(p => p.name && p.name !== 'undefined' && p.name !== '');
 
       onParticipantsImported(imported);
     };
@@ -84,7 +94,7 @@ export const ImportPanel: React.FC<ImportPanelProps> = ({
             <h3 className="font-semibold text-lg">Importer des participants</h3>
             <p className="text-sm opacity-60">Glissez-déposez un fichier Excel/CSV</p>
           </div>
-          <div className="mt-2 text-xs opacity-40">Colonnes supportées: Nom, Name, Email</div>
+          <div className="mt-2 text-xs opacity-40">Colonnes supportées: Prénom, Nom, Name, Email</div>
         </div>
 
         <form onSubmit={handleAddSubmit} className="glass px-6 py-8 rounded-2xl space-y-4">
