@@ -40,7 +40,8 @@ export const WinnersHistory: React.FC<WinnersHistoryProps> = ({ winners, onClear
               </div>
               <div className="flex-1">
                 <div className="font-bold">{winner.name}</div>
-                <div className="text-[10px] uppercase opacity-40 flex items-center gap-1">
+                {winner.company && <div className="text-xs text-blue-300 font-medium">{winner.company}</div>}
+                <div className="text-[10px] uppercase opacity-40 flex items-center gap-1 mt-1">
                   <Clock size={10} />
                   Gagné récemment
                 </div>

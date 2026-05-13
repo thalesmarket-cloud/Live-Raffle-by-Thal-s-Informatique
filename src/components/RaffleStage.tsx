@@ -239,6 +239,12 @@ export const RaffleStage: React.FC<RaffleStageProps> = ({
                   {winner?.name}
                 </div>
 
+                {winner?.company && (
+                  <div className="text-2xl md:text-4xl font-bold text-blue-400/90 uppercase tracking-wider mt-2">
+                    {winner.company}
+                  </div>
+                )}
+
                 <div className="mt-8 flex items-center gap-8 text-blue-300/40">
                   <div className="h-[1px] w-12 bg-current" />
                   <div className="text-[10px] font-mono tracking-widest uppercase">Verified Entity</div>

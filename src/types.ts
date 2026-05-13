@@ -8,6 +8,7 @@ export interface Participant {
   name: string;
   email?: string;
   department?: string;
+  company?: string;
 }
 
 export interface RaffleState {
